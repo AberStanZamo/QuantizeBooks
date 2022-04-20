@@ -1,14 +1,14 @@
 {
   "dataServiceGeneratorVersion": "0.12.4",
   "appInfo": {
-    "name": "Sample app",
-    "description": "Sample application for e-commerce",
-    "version": "6czjw250",
+    "name": "Quantize Books",
+    "description": "Cashflow and Tracking Application for quantiz.io",
+    "version": "471kqgp7",
     "id": "cl25o11ss32646801s61ygw24y5",
     "url": "https://app.amplication.com/cl25o11ss32646801s61ygw24y5",
     "settings": {
       "dbHost": "localhost",
-      "dbName": "",
+      "dbName": "dev",
       "dbPassword": "admin",
       "dbPort": 5432,
       "dbUser": "admin",

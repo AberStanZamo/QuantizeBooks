@@ -11,9 +11,35 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
+import { ExpenseCreateNestedManyWithoutUsersInput } from "./ExpenseCreateNestedManyWithoutUsersInput";
+import { ValidateNested, IsOptional, IsString } from "class-validator";
+import { Type } from "class-transformer";
 @InputType()
 class UserCreateInput {
+  @ApiProperty({
+    required: false,
+    type: () => ExpenseCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ExpenseCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ExpenseCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  approvedExpenses?: ExpenseCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => ExpenseCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => ExpenseCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => ExpenseCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  expenses?: ExpenseCreateNestedManyWithoutUsersInput;
+
   @ApiProperty({
     required: false,
     type: String,
