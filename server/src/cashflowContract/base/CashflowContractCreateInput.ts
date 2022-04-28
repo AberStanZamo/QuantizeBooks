@@ -23,8 +23,8 @@ import {
 } from "class-validator";
 import { Type } from "class-transformer";
 import { EnumCashflowContractBusinessEntity } from "./EnumCashflowContractBusinessEntity";
-import { CashflowContractCreateNestedManyWithoutCashflowContractsInput } from "./CashflowContractCreateNestedManyWithoutCashflowContractsInput";
 import { EnumCashflowContractCategories } from "./EnumCashflowContractCategories";
+import { CashflowContractCreateNestedManyWithoutCashflowContractsInput } from "./CashflowContractCreateNestedManyWithoutCashflowContractsInput";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { CashflowContractWhereUniqueInput } from "./CashflowContractWhereUniqueInput";
 import { EnumCashflowContractTerm } from "./EnumCashflowContractTerm";
@@ -77,18 +77,6 @@ class CashflowContractCreateInput {
 
   @ApiProperty({
     required: false,
-    type: () => CashflowContractCreateNestedManyWithoutCashflowContractsInput,
-  })
-  @ValidateNested()
-  @Type(() => CashflowContractCreateNestedManyWithoutCashflowContractsInput)
-  @IsOptional()
-  @Field(() => CashflowContractCreateNestedManyWithoutCashflowContractsInput, {
-    nullable: true,
-  })
-  cashflowContracts?: CashflowContractCreateNestedManyWithoutCashflowContractsInput;
-
-  @ApiProperty({
-    required: false,
     enum: EnumCashflowContractCategories,
     isArray: true,
   })
@@ -108,6 +96,18 @@ class CashflowContractCreateInput {
     | "OperatingCost"
     | "LoanPayment"
   >;
+
+  @ApiProperty({
+    required: false,
+    type: () => CashflowContractCreateNestedManyWithoutCashflowContractsInput,
+  })
+  @ValidateNested()
+  @Type(() => CashflowContractCreateNestedManyWithoutCashflowContractsInput)
+  @IsOptional()
+  @Field(() => CashflowContractCreateNestedManyWithoutCashflowContractsInput, {
+    nullable: true,
+  })
+  contracts?: CashflowContractCreateNestedManyWithoutCashflowContractsInput;
 
   @ApiProperty({
     required: false,

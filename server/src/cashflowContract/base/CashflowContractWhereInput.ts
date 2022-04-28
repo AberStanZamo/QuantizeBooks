@@ -81,7 +81,7 @@ class CashflowContractWhereInput {
   @Field(() => CashflowContractListRelationFilter, {
     nullable: true,
   })
-  cashflowContracts?: CashflowContractListRelationFilter;
+  contracts?: CashflowContractListRelationFilter;
 
   @ApiProperty({
     required: false,
