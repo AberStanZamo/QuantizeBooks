@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Expense } from "../../expense/base/Expense";
 import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { CashflowContract } from "../../cashflowContract/base/CashflowContract";
 @ObjectType()
 class User {
   @ApiProperty({
@@ -24,6 +25,24 @@ class User {
   @Type(() => Expense)
   @IsOptional()
   approvedExpenses?: Array<Expense>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [CashflowContract],
+  })
+  @ValidateNested()
+  @Type(() => CashflowContract)
+  @IsOptional()
+  cashflowContract?: Array<CashflowContract>;
+
+  @ApiProperty({
+    required: false,
+    type: () => [CashflowContract],
+  })
+  @ValidateNested()
+  @Type(() => CashflowContract)
+  @IsOptional()
+  cashflowContractsManager?: Array<CashflowContract>;
 
   @ApiProperty({
     required: true,

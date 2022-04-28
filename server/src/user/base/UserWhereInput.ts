@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { ExpenseListRelationFilter } from "../../expense/base/ExpenseListRelationFilter";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
+import { CashflowContractListRelationFilter } from "../../cashflowContract/base/CashflowContractListRelationFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { StringFilter } from "../../util/StringFilter";
 @InputType()
@@ -29,6 +30,30 @@ class UserWhereInput {
     nullable: true,
   })
   approvedExpenses?: ExpenseListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => CashflowContractListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => CashflowContractListRelationFilter)
+  @IsOptional()
+  @Field(() => CashflowContractListRelationFilter, {
+    nullable: true,
+  })
+  cashflowContract?: CashflowContractListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => CashflowContractListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => CashflowContractListRelationFilter)
+  @IsOptional()
+  @Field(() => CashflowContractListRelationFilter, {
+    nullable: true,
+  })
+  cashflowContractsManager?: CashflowContractListRelationFilter;
 
   @ApiProperty({
     required: false,

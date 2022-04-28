@@ -27,6 +27,8 @@ import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { User } from "./User";
 import { ExpenseFindManyArgs } from "../../expense/base/ExpenseFindManyArgs";
 import { Expense } from "../../expense/base/Expense";
+import { CashflowContractFindManyArgs } from "../../cashflowContract/base/CashflowContractFindManyArgs";
+import { CashflowContract } from "../../cashflowContract/base/CashflowContract";
 import { UserService } from "../user.service";
 
 @graphql.Resolver(() => User)
@@ -222,6 +224,61 @@ export class UserResolverBase {
       resource: "Expense",
     });
     const results = await this.service.findApprovedExpenses(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results.map((result) => permission.filter(result));
+  }
+
+  @graphql.ResolveField(() => [CashflowContract])
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async cashflowContract(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: CashflowContractFindManyArgs,
+    @gqlUserRoles.UserRoles() userRoles: string[]
+  ): Promise<CashflowContract[]> {
+    const permission = this.rolesBuilder.permission({
+      role: userRoles,
+      action: "read",
+      possession: "any",
+      resource: "CashflowContract",
+    });
+    const results = await this.service.findCashflowContract(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results.map((result) => permission.filter(result));
+  }
+
+  @graphql.ResolveField(() => [CashflowContract])
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async cashflowContractsManager(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: CashflowContractFindManyArgs,
+    @gqlUserRoles.UserRoles() userRoles: string[]
+  ): Promise<CashflowContract[]> {
+    const permission = this.rolesBuilder.permission({
+      role: userRoles,
+      action: "read",
+      possession: "any",
+      resource: "CashflowContract",
+    });
+    const results = await this.service.findCashflowContractsManager(
+      parent.id,
+      args
+    );
 
     if (!results) {
       return [];

@@ -13,6 +13,10 @@ import { ExpenseList } from "./expense/ExpenseList";
 import { ExpenseCreate } from "./expense/ExpenseCreate";
 import { ExpenseEdit } from "./expense/ExpenseEdit";
 import { ExpenseShow } from "./expense/ExpenseShow";
+import { CashflowContractList } from "./cashflowContract/CashflowContractList";
+import { CashflowContractCreate } from "./cashflowContract/CashflowContractCreate";
+import { CashflowContractEdit } from "./cashflowContract/CashflowContractEdit";
+import { CashflowContractShow } from "./cashflowContract/CashflowContractShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -52,6 +56,13 @@ const App = (): React.ReactElement => {
           edit={ExpenseEdit}
           create={ExpenseCreate}
           show={ExpenseShow}
+        />
+        <Resource
+          name="CashflowContract"
+          list={CashflowContractList}
+          edit={CashflowContractEdit}
+          create={CashflowContractCreate}
+          show={CashflowContractShow}
         />
       </Admin>
     </div>
