@@ -10,7 +10,7 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "nestjs-prisma";
-import { Prisma, User, Expense } from "@prisma/client";
+import { Prisma, User, Expense, CashflowContract } from "@prisma/client";
 import { PasswordService } from "../../auth/password.service";
 import { transformStringFieldUpdateInput } from "../../prisma.util";
 
@@ -81,6 +81,28 @@ export class UserServiceBase {
         where: { id: parentId },
       })
       .approvedExpenses(args);
+  }
+
+  async findCashflowContract(
+    parentId: string,
+    args: Prisma.CashflowContractFindManyArgs
+  ): Promise<CashflowContract[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .cashflowContract(args);
+  }
+
+  async findCashflowContractsManager(
+    parentId: string,
+    args: Prisma.CashflowContractFindManyArgs
+  ): Promise<CashflowContract[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .cashflowContractsManager(args);
   }
 
   async findExpenses(

@@ -14,6 +14,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { ExpenseUpdateManyWithoutUsersInput } from "./ExpenseUpdateManyWithoutUsersInput";
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
+import { CashflowContractUpdateManyWithoutUsersInput } from "./CashflowContractUpdateManyWithoutUsersInput";
 @InputType()
 class UserUpdateInput {
   @ApiProperty({
@@ -27,6 +28,30 @@ class UserUpdateInput {
     nullable: true,
   })
   approvedExpenses?: ExpenseUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => CashflowContractUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => CashflowContractUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => CashflowContractUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  cashflowContract?: CashflowContractUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => CashflowContractUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => CashflowContractUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => CashflowContractUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  cashflowContractsManager?: CashflowContractUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,
