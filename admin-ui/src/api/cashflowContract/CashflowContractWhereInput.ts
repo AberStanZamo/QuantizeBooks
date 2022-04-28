@@ -13,7 +13,7 @@ export type CashflowContractWhereInput = {
   acquisitionDate?: DateTimeNullableFilter;
   amountPerTerm?: FloatNullableFilter;
   businessEntity?: "FoxRunDelivery" | "Quantize" | "HybridInnovations";
-  cashflowContracts?: CashflowContractListRelationFilter;
+  contracts?: CashflowContractListRelationFilter;
   customServiceName?: StringNullableFilter;
   expenseDate?: DateTimeNullableFilter;
   id?: StringFilter;

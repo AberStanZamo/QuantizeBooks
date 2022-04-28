@@ -7,8 +7,8 @@ import {
   SelectInput,
   DateTimeInput,
   NumberInput,
-  ReferenceArrayInput,
   SelectArrayInput,
+  ReferenceArrayInput,
   TextInput,
   BooleanInput,
   ReferenceInput,
@@ -45,14 +45,6 @@ export const CashflowContractEdit = (props: EditProps): React.ReactElement => {
           allowEmpty
           optionValue="value"
         />
-        <ReferenceArrayInput
-          source="cashflowContracts"
-          reference="CashflowContract"
-          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
-          format={(value: any) => value && value.map((v: any) => v.id)}
-        >
-          <SelectArrayInput optionText={CashflowContractTitle} />
-        </ReferenceArrayInput>
         <SelectArrayInput
           label="Categories"
           source="categories"
@@ -68,6 +60,14 @@ export const CashflowContractEdit = (props: EditProps): React.ReactElement => {
           optionText="label"
           optionValue="value"
         />
+        <ReferenceArrayInput
+          source="contracts"
+          reference="CashflowContract"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={CashflowContractTitle} />
+        </ReferenceArrayInput>
         <TextInput label="Custom Service Name" source="customServiceName" />
         <DateTimeInput label="Expense Date" source="expenseDate" />
         <BooleanInput label="Is Series" source="isSeries" />

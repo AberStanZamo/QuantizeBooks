@@ -8,7 +8,6 @@ export type CashflowContractUpdateInput = {
   acquisitionDate?: Date | null;
   amountPerTerm?: number | null;
   businessEntity?: "FoxRunDelivery" | "Quantize" | "HybridInnovations" | null;
-  cashflowContracts?: CashflowContractUpdateManyWithoutCashflowContractsInput;
   categories?: Array<
     | "SoftwareSubscription"
     | "Misc"
@@ -18,6 +17,7 @@ export type CashflowContractUpdateInput = {
     | "OperatingCost"
     | "LoanPayment"
   >;
+  contracts?: CashflowContractUpdateManyWithoutCashflowContractsInput;
   customServiceName?: string | null;
   expenseDate?: Date | null;
   isSeries?: boolean | null;

@@ -240,7 +240,7 @@ export class CashflowContractResolverBase {
     action: "read",
     possession: "any",
   })
-  async cashflowContracts(
+  async contracts(
     @graphql.Parent() parent: CashflowContract,
     @graphql.Args() args: CashflowContractFindManyArgs,
     @gqlUserRoles.UserRoles() userRoles: string[]
@@ -251,7 +251,7 @@ export class CashflowContractResolverBase {
       possession: "any",
       resource: "CashflowContract",
     });
-    const results = await this.service.findCashflowContracts(parent.id, args);
+    const results = await this.service.findContracts(parent.id, args);
 
     if (!results) {
       return [];

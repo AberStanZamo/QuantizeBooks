@@ -74,15 +74,6 @@ class CashflowContract {
 
   @ApiProperty({
     required: false,
-    type: () => [CashflowContract],
-  })
-  @ValidateNested()
-  @Type(() => CashflowContract)
-  @IsOptional()
-  cashflowContracts?: Array<CashflowContract>;
-
-  @ApiProperty({
-    required: false,
     enum: EnumCashflowContractCategories,
     isArray: true,
   })
@@ -102,6 +93,15 @@ class CashflowContract {
     | "OperatingCost"
     | "LoanPayment"
   >;
+
+  @ApiProperty({
+    required: false,
+    type: () => [CashflowContract],
+  })
+  @ValidateNested()
+  @Type(() => CashflowContract)
+  @IsOptional()
+  contracts?: Array<CashflowContract>;
 
   @ApiProperty({
     required: true,

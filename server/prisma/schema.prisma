@@ -44,8 +44,8 @@ model CashflowContract {
   acquisitionDate   DateTime?
   amountPerTerm     Float?
   businessEntity    EnumCashflowContractBusinessEntity?
-  cashflowContracts CashflowContract[]                  @relation(name: "cashflowContracts")
   categories        EnumCashflowContractCategories[]
+  contracts         CashflowContract[]                  @relation(name: "contracts")
   createdAt         DateTime                            @default(now())
   customServiceName String?
   expenseDate       DateTime?
@@ -55,7 +55,7 @@ model CashflowContract {
   managerId         String?
   notes             String?
   oneTimeOnly       Boolean?
-  series            CashflowContract?                   @relation(name: "cashflowContracts", fields: [seriesId], references: [id])
+  series            CashflowContract?                   @relation(name: "contracts", fields: [seriesId], references: [id])
   seriesId          String?
   serviceName       String?
   term              EnumCashflowContractTerm?

@@ -47,7 +47,7 @@ export class CashflowContractServiceBase {
     return this.prisma.cashflowContract.delete(args);
   }
 
-  async findCashflowContracts(
+  async findContracts(
     parentId: string,
     args: Prisma.CashflowContractFindManyArgs
   ): Promise<CashflowContract[]> {
@@ -55,7 +55,7 @@ export class CashflowContractServiceBase {
       .findUnique({
         where: { id: parentId },
       })
-      .cashflowContracts(args);
+      .contracts(args);
   }
 
   async findUsers(

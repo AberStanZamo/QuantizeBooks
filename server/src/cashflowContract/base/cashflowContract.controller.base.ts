@@ -416,14 +416,14 @@ export class CashflowContractControllerBase {
     defaultAuthGuard.DefaultAuthGuard,
     nestAccessControl.ACGuard
   )
-  @common.Get("/:id/cashflowContracts")
+  @common.Get("/:id/contracts")
   @nestAccessControl.UseRoles({
     resource: "CashflowContract",
     action: "read",
     possession: "any",
   })
   @ApiNestedQuery(CashflowContractFindManyArgs)
-  async findManyCashflowContracts(
+  async findManyContracts(
     @common.Req() request: Request,
     @common.Param() params: CashflowContractWhereUniqueInput,
     @nestAccessControl.UserRoles() userRoles: string[]
@@ -435,7 +435,7 @@ export class CashflowContractControllerBase {
       possession: "any",
       resource: "CashflowContract",
     });
-    const results = await this.service.findCashflowContracts(params.id, {
+    const results = await this.service.findContracts(params.id, {
       ...query,
       select: {
         account: true,
@@ -482,19 +482,19 @@ export class CashflowContractControllerBase {
     defaultAuthGuard.DefaultAuthGuard,
     nestAccessControl.ACGuard
   )
-  @common.Post("/:id/cashflowContracts")
+  @common.Post("/:id/contracts")
   @nestAccessControl.UseRoles({
     resource: "CashflowContract",
     action: "update",
     possession: "any",
   })
-  async createCashflowContracts(
+  async createContracts(
     @common.Param() params: CashflowContractWhereUniqueInput,
     @common.Body() body: CashflowContractWhereUniqueInput[],
     @nestAccessControl.UserRoles() userRoles: string[]
   ): Promise<void> {
     const data = {
-      cashflowContracts: {
+      contracts: {
         connect: body,
       },
     };
@@ -527,19 +527,19 @@ export class CashflowContractControllerBase {
     defaultAuthGuard.DefaultAuthGuard,
     nestAccessControl.ACGuard
   )
-  @common.Patch("/:id/cashflowContracts")
+  @common.Patch("/:id/contracts")
   @nestAccessControl.UseRoles({
     resource: "CashflowContract",
     action: "update",
     possession: "any",
   })
-  async updateCashflowContracts(
+  async updateContracts(
     @common.Param() params: CashflowContractWhereUniqueInput,
     @common.Body() body: CashflowContractWhereUniqueInput[],
     @nestAccessControl.UserRoles() userRoles: string[]
   ): Promise<void> {
     const data = {
-      cashflowContracts: {
+      contracts: {
         set: body,
       },
     };
@@ -572,19 +572,19 @@ export class CashflowContractControllerBase {
     defaultAuthGuard.DefaultAuthGuard,
     nestAccessControl.ACGuard
   )
-  @common.Delete("/:id/cashflowContracts")
+  @common.Delete("/:id/contracts")
   @nestAccessControl.UseRoles({
     resource: "CashflowContract",
     action: "update",
     possession: "any",
   })
-  async deleteCashflowContracts(
+  async deleteContracts(
     @common.Param() params: CashflowContractWhereUniqueInput,
     @common.Body() body: CashflowContractWhereUniqueInput[],
     @nestAccessControl.UserRoles() userRoles: string[]
   ): Promise<void> {
     const data = {
-      cashflowContracts: {
+      contracts: {
         disconnect: body,
       },
     };

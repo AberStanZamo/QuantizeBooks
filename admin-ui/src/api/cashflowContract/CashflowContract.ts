@@ -5,7 +5,6 @@ export type CashflowContract = {
   acquisitionDate: Date | null;
   amountPerTerm: number | null;
   businessEntity?: "FoxRunDelivery" | "Quantize" | "HybridInnovations" | null;
-  cashflowContracts?: Array<CashflowContract>;
   categories?: Array<
     | "SoftwareSubscription"
     | "Misc"
@@ -15,6 +14,7 @@ export type CashflowContract = {
     | "OperatingCost"
     | "LoanPayment"
   >;
+  contracts?: Array<CashflowContract>;
   createdAt: Date;
   customServiceName: string | null;
   expenseDate: Date | null;
