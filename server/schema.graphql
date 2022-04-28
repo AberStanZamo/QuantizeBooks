@@ -2,6 +2,140 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input BooleanNullableFilter {
+  equals: Boolean
+  not: Boolean
+}
+
+type CashflowContract {
+  account: EnumCashflowContractAccount
+  acquisitionDate: DateTime
+  amountPerTerm: Float
+  businessEntity: EnumCashflowContractBusinessEntity
+  categories: [EnumCashflowContractCategories!]
+  contracts(orderBy: [CashflowContractOrderByInput!], skip: Float, take: Float, where: CashflowContractWhereInput): [CashflowContract!]!
+  createdAt: DateTime!
+  customServiceName: String
+  expenseDate: DateTime
+  id: String!
+  isSeries: Boolean
+  manager: User
+  notes: String
+  oneTimeOnly: Boolean
+  series: CashflowContract
+  serviceName: String
+  term: EnumCashflowContractTerm
+  updatedAt: DateTime!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+input CashflowContractCreateInput {
+  account: EnumCashflowContractAccount
+  acquisitionDate: DateTime
+  amountPerTerm: Float
+  businessEntity: EnumCashflowContractBusinessEntity
+  categories: [EnumCashflowContractCategories!]
+  contracts: CashflowContractCreateNestedManyWithoutCashflowContractsInput
+  customServiceName: String
+  expenseDate: DateTime
+  isSeries: Boolean
+  manager: UserWhereUniqueInput
+  notes: String
+  oneTimeOnly: Boolean
+  series: CashflowContractWhereUniqueInput
+  serviceName: String
+  term: EnumCashflowContractTerm
+  users: UserCreateNestedManyWithoutCashflowContractsInput
+}
+
+input CashflowContractCreateNestedManyWithoutCashflowContractsInput {
+  connect: [CashflowContractWhereUniqueInput!]
+}
+
+input CashflowContractCreateNestedManyWithoutUsersInput {
+  connect: [CashflowContractWhereUniqueInput!]
+}
+
+input CashflowContractListRelationFilter {
+  every: CashflowContractWhereInput
+  none: CashflowContractWhereInput
+  some: CashflowContractWhereInput
+}
+
+input CashflowContractOrderByInput {
+  account: SortOrder
+  acquisitionDate: SortOrder
+  amountPerTerm: SortOrder
+  businessEntity: SortOrder
+  categories: SortOrder
+  createdAt: SortOrder
+  customServiceName: SortOrder
+  expenseDate: SortOrder
+  id: SortOrder
+  isSeries: SortOrder
+  managerId: SortOrder
+  notes: SortOrder
+  oneTimeOnly: SortOrder
+  seriesId: SortOrder
+  serviceName: SortOrder
+  term: SortOrder
+  updatedAt: SortOrder
+}
+
+input CashflowContractUpdateInput {
+  account: EnumCashflowContractAccount
+  acquisitionDate: DateTime
+  amountPerTerm: Float
+  businessEntity: EnumCashflowContractBusinessEntity
+  categories: [EnumCashflowContractCategories!]
+  contracts: CashflowContractUpdateManyWithoutCashflowContractsInput
+  customServiceName: String
+  expenseDate: DateTime
+  isSeries: Boolean
+  manager: UserWhereUniqueInput
+  notes: String
+  oneTimeOnly: Boolean
+  series: CashflowContractWhereUniqueInput
+  serviceName: String
+  term: EnumCashflowContractTerm
+  users: UserUpdateManyWithoutCashflowContractsInput
+}
+
+input CashflowContractUpdateManyWithoutCashflowContractsInput {
+  connect: [CashflowContractWhereUniqueInput!]
+  disconnect: [CashflowContractWhereUniqueInput!]
+  set: [CashflowContractWhereUniqueInput!]
+}
+
+input CashflowContractUpdateManyWithoutUsersInput {
+  connect: [CashflowContractWhereUniqueInput!]
+  disconnect: [CashflowContractWhereUniqueInput!]
+  set: [CashflowContractWhereUniqueInput!]
+}
+
+input CashflowContractWhereInput {
+  account: EnumCashflowContractAccount
+  acquisitionDate: DateTimeNullableFilter
+  amountPerTerm: FloatNullableFilter
+  businessEntity: EnumCashflowContractBusinessEntity
+  contracts: CashflowContractListRelationFilter
+  customServiceName: StringNullableFilter
+  expenseDate: DateTimeNullableFilter
+  id: StringFilter
+  isSeries: BooleanNullableFilter
+  manager: UserWhereUniqueInput
+  notes: StringNullableFilter
+  oneTimeOnly: BooleanNullableFilter
+  series: CashflowContractWhereUniqueInput
+  serviceName: StringNullableFilter
+  term: EnumCashflowContractTerm
+  users: UserListRelationFilter
+}
+
+input CashflowContractWhereUniqueInput {
+  id: String!
+}
+
 input Credentials {
   password: String!
   username: String!
@@ -21,6 +155,35 @@ input DateTimeNullableFilter {
   lte: DateTime
   not: DateTime
   notIn: [DateTime!]
+}
+
+enum EnumCashflowContractAccount {
+  FoxrunDeliveryEnt
+}
+
+enum EnumCashflowContractBusinessEntity {
+  FoxRunDelivery
+  HybridInnovations
+  Quantize
+}
+
+enum EnumCashflowContractCategories {
+  Deposit
+  Income
+  LoanPayment
+  Misc
+  OperatingCost
+  SoftwareSubscription
+  Withdrawal
+}
+
+enum EnumCashflowContractTerm {
+  Monthly
+  Quarterly
+  UsersMonthly
+  UsersQuarterly
+  UsersYearly
+  Yearly
 }
 
 enum EnumExpenseBusinessEntity {
@@ -128,22 +291,28 @@ input FloatNullableFilter {
 }
 
 type MetaQueryPayload {
-  count: String!
+  count: Float!
 }
 
 type Mutation {
+  createCashflowContract(data: CashflowContractCreateInput!): CashflowContract!
   createExpense(data: ExpenseCreateInput!): Expense!
   createUser(data: UserCreateInput!): User!
+  deleteCashflowContract(where: CashflowContractWhereUniqueInput!): CashflowContract!
   deleteExpense(where: ExpenseWhereUniqueInput!): Expense!
   deleteUser(where: UserWhereUniqueInput!): User!
   login(credentials: Credentials!): UserInfo!
+  updateCashflowContract(data: CashflowContractUpdateInput!, where: CashflowContractWhereUniqueInput!): CashflowContract!
   updateExpense(data: ExpenseUpdateInput!, where: ExpenseWhereUniqueInput!): Expense!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
 
 type Query {
+  _cashflowContractsMeta(orderBy: [CashflowContractOrderByInput!], skip: Float, take: Float, where: CashflowContractWhereInput): MetaQueryPayload!
   _expensesMeta(orderBy: [ExpenseOrderByInput!], skip: Float, take: Float, where: ExpenseWhereInput): MetaQueryPayload!
   _usersMeta(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): MetaQueryPayload!
+  cashflowContract(where: CashflowContractWhereUniqueInput!): CashflowContract
+  cashflowContracts(orderBy: [CashflowContractOrderByInput!], skip: Float, take: Float, where: CashflowContractWhereInput): [CashflowContract!]!
   expense(where: ExpenseWhereUniqueInput!): Expense
   expenses(orderBy: [ExpenseOrderByInput!], skip: Float, take: Float, where: ExpenseWhereInput): [Expense!]!
   user(where: UserWhereUniqueInput!): User
@@ -193,6 +362,8 @@ input StringNullableFilter {
 
 type User {
   approvedExpenses(orderBy: [ExpenseOrderByInput!], skip: Float, take: Float, where: ExpenseWhereInput): [Expense!]!
+  cashflowContract(orderBy: [CashflowContractOrderByInput!], skip: Float, take: Float, where: CashflowContractWhereInput): [CashflowContract!]!
+  cashflowContractsManager(orderBy: [CashflowContractOrderByInput!], skip: Float, take: Float, where: CashflowContractWhereInput): [CashflowContract!]!
   createdAt: DateTime!
   expenses(orderBy: [ExpenseOrderByInput!], skip: Float, take: Float, where: ExpenseWhereInput): [Expense!]!
   firstName: String
@@ -205,6 +376,8 @@ type User {
 
 input UserCreateInput {
   approvedExpenses: ExpenseCreateNestedManyWithoutUsersInput
+  cashflowContract: CashflowContractCreateNestedManyWithoutUsersInput
+  cashflowContractsManager: CashflowContractCreateNestedManyWithoutUsersInput
   expenses: ExpenseCreateNestedManyWithoutUsersInput
   firstName: String
   lastName: String
@@ -213,10 +386,20 @@ input UserCreateInput {
   username: String!
 }
 
+input UserCreateNestedManyWithoutCashflowContractsInput {
+  connect: [UserWhereUniqueInput!]
+}
+
 type UserInfo {
   accessToken: String
   roles: [String!]!
   username: String!
+}
+
+input UserListRelationFilter {
+  every: UserWhereInput
+  none: UserWhereInput
+  some: UserWhereInput
 }
 
 input UserOrderByInput {
@@ -232,6 +415,8 @@ input UserOrderByInput {
 
 input UserUpdateInput {
   approvedExpenses: ExpenseUpdateManyWithoutUsersInput
+  cashflowContract: CashflowContractUpdateManyWithoutUsersInput
+  cashflowContractsManager: CashflowContractUpdateManyWithoutUsersInput
   expenses: ExpenseUpdateManyWithoutUsersInput
   firstName: String
   lastName: String
@@ -240,8 +425,16 @@ input UserUpdateInput {
   username: String
 }
 
+input UserUpdateManyWithoutCashflowContractsInput {
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+}
+
 input UserWhereInput {
   approvedExpenses: ExpenseListRelationFilter
+  cashflowContract: CashflowContractListRelationFilter
+  cashflowContractsManager: CashflowContractListRelationFilter
   expenses: ExpenseListRelationFilter
   firstName: StringNullableFilter
   id: StringFilter
