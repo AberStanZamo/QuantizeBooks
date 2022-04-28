@@ -214,6 +214,7 @@ class CashflowContractUpdateInput {
     | "Yearly"
     | "UsersMonthly"
     | "UsersQuarterly"
+    | "UsersYearly"
     | null;
 
   @ApiProperty({

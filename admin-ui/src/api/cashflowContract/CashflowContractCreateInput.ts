@@ -32,6 +32,7 @@ export type CashflowContractCreateInput = {
     | "Yearly"
     | "UsersMonthly"
     | "UsersQuarterly"
+    | "UsersYearly"
     | null;
   users?: UserCreateNestedManyWithoutCashflowContractsInput;
 };

@@ -31,6 +31,7 @@ export type CashflowContract = {
     | "Yearly"
     | "UsersMonthly"
     | "UsersQuarterly"
+    | "UsersYearly"
     | null;
   updatedAt: Date;
   users?: Array<User>;

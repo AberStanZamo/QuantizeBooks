@@ -23,6 +23,12 @@ export type CashflowContractWhereInput = {
   oneTimeOnly?: BooleanNullableFilter;
   series?: CashflowContractWhereUniqueInput;
   serviceName?: StringNullableFilter;
-  term?: "Monthly" | "Quarterly" | "Yearly" | "UsersMonthly" | "UsersQuarterly";
+  term?:
+    | "Monthly"
+    | "Quarterly"
+    | "Yearly"
+    | "UsersMonthly"
+    | "UsersQuarterly"
+    | "UsersYearly";
   users?: UserListRelationFilter;
 };
