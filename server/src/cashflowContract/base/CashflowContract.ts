@@ -218,6 +218,7 @@ class CashflowContract {
     | "Yearly"
     | "UsersMonthly"
     | "UsersQuarterly"
+    | "UsersYearly"
     | null;
 
   @ApiProperty({

@@ -193,7 +193,13 @@ class CashflowContractWhereInput {
   @Field(() => EnumCashflowContractTerm, {
     nullable: true,
   })
-  term?: "Monthly" | "Quarterly" | "Yearly" | "UsersMonthly" | "UsersQuarterly";
+  term?:
+    | "Monthly"
+    | "Quarterly"
+    | "Yearly"
+    | "UsersMonthly"
+    | "UsersQuarterly"
+    | "UsersYearly";
 
   @ApiProperty({
     required: false,

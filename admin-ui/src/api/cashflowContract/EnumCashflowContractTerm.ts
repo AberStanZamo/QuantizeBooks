@@ -4,4 +4,5 @@ export enum EnumCashflowContractTerm {
   Yearly = "Yearly",
   UsersMonthly = "UsersMonthly",
   UsersQuarterly = "UsersQuarterly",
+  UsersYearly = "UsersYearly",
 }

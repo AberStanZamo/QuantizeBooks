@@ -32,6 +32,7 @@ export type CashflowContractUpdateInput = {
     | "Yearly"
     | "UsersMonthly"
     | "UsersQuarterly"
+    | "UsersYearly"
     | null;
   users?: UserUpdateManyWithoutCashflowContractsInput;
 };

@@ -93,6 +93,7 @@ export const CashflowContractEdit = (props: EditProps): React.ReactElement => {
             { label: "Yearly", value: "Yearly" },
             { label: "Users/Monthly", value: "UsersMonthly" },
             { label: "Users/Quarterly", value: "UsersQuarterly" },
+            { label: "Users/Yearly", value: "UsersYearly" },
           ]}
           optionText="label"
           allowEmpty
